@@ -5,6 +5,7 @@ import axios from "axios"
 import { PaperClipIcon } from '@heroicons/react/24/outline' 
 import { useEmailResponse } from "../../hooks/useEmailResponse";
 import Loading from "../Loading";
+import { EMAIL_VERIFY_API_URL } from "../../../config";
 
 
 const FormCpnt = () => {
@@ -13,10 +14,7 @@ const FormCpnt = () => {
     const [files, setFiles] = useState([]);
     const [loading, setLoading] = useState(false);
     const {setEmailResponse} = useEmailResponse()
-
-    const test = import.meta.env.VITE_TEST;
-    console.log(test)
-
+    
     const navigate = useNavigate()
 
     const handleChangeText = (text) => {
@@ -41,11 +39,10 @@ const FormCpnt = () => {
                 }
             }
             setLoading(true);
-            axios.post('http://localhost:8000/check_email', formData, {
+            axios.post(`${EMAIL_VERIFY_API_URL}/check_email`, formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             })
             .then(res => {
-                console.log("Upload enviado ao backend", res.data);
                 setEmailResponse(res.data)
                 navigate("/result");
             })
