@@ -4,7 +4,7 @@ from typing import List
 from app.models import ResponseList
 
 router = APIRouter(
-    prefix='/api/check_email',
+    prefix='/check_email',
     responses={404: {'description': 'Not found'}},
 )
 
