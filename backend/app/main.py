@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from fastapi.staticfiles import StaticFiles
 from app.router.check_email import router as check_email
 
 app = FastAPI()
@@ -12,6 +12,7 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+app.mount("/", StaticFiles(directory="../frontend/dist", html=True), name="frontend")
 app.include_router(check_email)
 
 @app.get('/api')
