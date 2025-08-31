@@ -3,3 +3,4 @@ google.generativeai
 pdfplumber 
 nltk
 python-multipart
+uvicorn
