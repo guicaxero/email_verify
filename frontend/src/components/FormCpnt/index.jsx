@@ -13,7 +13,10 @@ const FormCpnt = () => {
     const [files, setFiles] = useState([]);
     const [loading, setLoading] = useState(false);
     const {setEmailResponse} = useEmailResponse()
-    
+
+    const test = import.meta.env.VITE_TEST;
+    console.log(test)
+
     const navigate = useNavigate()
 
     const handleChangeText = (text) => {
