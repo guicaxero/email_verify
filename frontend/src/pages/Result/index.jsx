@@ -6,21 +6,24 @@ import EmailResponseCard from "../../components/EmailResponseCard";
 
 const Result = () => {
     const { emailResponse } = useEmailResponse();
+    const hasResults = emailResponse && emailResponse.length > 0;
 
     return (
         <Card title="Resultado gerado">
-            {emailResponse && emailResponse.length > 0 ? (
-                emailResponse.map((email, index) => {
-                    const isProductive = email.is_productive ? "Produtivo" : "Improdutivo";
-                    return (
-                        <EmailResponseCard
-                            key={index}
-                            isProductive={isProductive}
-                            responseGenerate={email.response_generate}
-                            position={index + 1}
-                        />
-                    );
-                })
+            {hasResults ? (
+                <div className="flex-1 w-full overflow-y-auto pr-2">
+                    {emailResponse.map((email, index) => {
+                        const isProductive = email.is_productive ? "Produtivo" : "Improdutivo";
+                        return (
+                            <EmailResponseCard
+                                key={index}
+                                isProductive={isProductive}
+                                responseGenerate={email.response_generate}
+                                position={index + 1}
+                            />
+                        );
+                    })}
+                </div>
             ) : (
                 <div className="flex flex-col items-center justify-center text-center p-6 bg-white rounded-2xl shadow-md w-full">
                     <h2 className="text-xl font-semibold text-gray-800 mb-2">

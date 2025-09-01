@@ -11,9 +11,9 @@ const Router = () => {
             <EmailResponseProvider>
                 <Routes>
                     <Route path='/' element={<PageDefault />}>
-                            <Route index element={<Home />} />
-                            <Route path='/result' element={<Result />} />
-                            <Route path='*' element={<NotFound />} />
+                        <Route index element={<Home />} />
+                        <Route path='result' element={<Result />} />
+                        <Route path='*' element={<NotFound />} />
                     </Route>
                 </Routes>
             </EmailResponseProvider>

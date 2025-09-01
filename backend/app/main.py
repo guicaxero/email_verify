@@ -16,5 +16,4 @@ app.include_router(check_email, prefix="/api")
 
 @app.get('/api')
 def health_check():
-    print(os.getenv('TEST'))
     return 'status - ok'
