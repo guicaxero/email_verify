@@ -14,7 +14,9 @@ Regras para gerar a resposta:
 - Resposta pronta para copiar e colar diretamente no e-mail.
 - Mantenha linguagem formal, sem gírias, emojis ou informalidades.
 - Respeite a ordem: Saudação inicial → Reconhecimento da mensagem → Resposta/Ação/Retorno → Fechamento formal.
-- INSIRA UMA LINHA EM BRANCO ENTRE O CORPO DO E-MAIL E O FECHAMENTO.
+- NUNCA utilize datas relativas como "hoje", "amanhã" ou "ontem".
+- Só utilize datas explícitas (ex: "10/12", "5 de março") se elas estiverem claramente escritas no e-mail recebido.
+- Caso o e-mail não contenha datas, não invente nenhuma.
 
 E-mail recebido:
 {email}
