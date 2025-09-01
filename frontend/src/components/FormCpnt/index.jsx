@@ -24,7 +24,12 @@ const FormCpnt = () => {
 
     const handleUploadFile = (files) => {
         setValueText(null);
-        setFiles(files)
+        const filesArray = Array.from(files);
+        if (filesArray.length > 5) {
+            alert("Você só pode enviar até 5 emails por vez.");
+        } else {
+            setFiles(files)
+        }
     }
 
     const handleSubmit = (event) => {
@@ -100,10 +105,20 @@ const FormCpnt = () => {
                     />
                     <label
                         htmlFor="fileUpload"
-                        className="w-full border rounded-md p-3 text-gray-900 cursor-pointer hover:bg-gray-200 flex items-center justify-center gap-2"
+                        className="w-full border rounded-md p-3 text-gray-900 cursor-pointer hover:bg-gray-200 flex items-center justify-center gap-2 flex-wrap"
                     >
                         <PaperClipIcon className="w-5 h-5 text-gray-500" />
-                        {files && files[0] ? files[0].name : "Clique aqui para fazer upload do arquivo"}
+                        {files && files.length > 0 ? (
+                            files.length === 1 ? (
+                                files[0].name
+                            ) : (
+                                <>
+                                    {files[0].name} + {files.length - 1} arquivo{files.length - 1 > 1 ? "s" : ""} selecionado{files.length - 1 > 1 ? "s" : ""}
+                                </>
+                            )
+                        ) : (
+                            "Clique aqui para fazer upload do arquivo"
+                        )}
                     </label>
                 </div>
             )}
