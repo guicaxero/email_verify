@@ -1,4 +1,11 @@
-const EmailResponseCard = ({ isProductive, responseGenerate, position }) => {
+
+interface EmailResponseCardProps {
+    isProductive: string,
+    responseGenerate: string,
+    position: number
+}
+
+const EmailResponseCard = ({ isProductive, responseGenerate, position }:EmailResponseCardProps) => {
     return (
         <div className="w-full bg-white rounded-2xl shadow-md p-6 mb-6 transition-transform transform hover:scale-[0.99] hover:shadow-xl">
             <div className="flex justify-between items-center mb-4">

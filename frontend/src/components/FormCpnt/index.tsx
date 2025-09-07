@@ -11,19 +11,20 @@ import { EMAIL_VERIFY_API_URL } from "../../../config";
 const FormCpnt = () => {
     const [mode, setMode] = useState("text");
     const [valueText, setValueText] = useState("");
-    const [files, setFiles] = useState([]);
+    const [files, setFiles] = useState<FileList | null>(null);
     const [loading, setLoading] = useState(false);
     const {setEmailResponse} = useEmailResponse()
     
     const navigate = useNavigate()
 
-    const handleChangeText = (text) => {
+    const handleChangeText = (text: string) => {
         setValueText(text);
         setFiles(null)
     }
 
-    const handleUploadFile = (files) => {
-        setValueText(null);
+    const handleUploadFile = (files: FileList | null) => {
+        if (!files) return;
+        setValueText("");
         const filesArray = Array.from(files);
         if (filesArray.length > 5) {
             alert("Você só pode enviar até 5 emails por vez.");
@@ -32,10 +33,10 @@ const FormCpnt = () => {
         }
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (valueText || files) {
+        if (valueText.trim() !== "" || files) {
             const formData = new FormData();
             if (valueText) formData.append("email", valueText);
             if (files) {
