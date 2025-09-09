@@ -1,6 +1,7 @@
 # 📧 Email Verify - Validação e Análise de Emails
 
 ![Made with React](https://img.shields.io/badge/Made%20with-React-blue?logo=react)
+![TypeScript](https://img.shields.io/badge/Language-TypeScript-blue)
 ![TailwindCSS](https://img.shields.io/badge/Style-TailwindCSS-teal)
 ![FastAPI](https://img.shields.io/badge/Backend-FastAPI-lightgrey)
 ![Python](https://img.shields.io/badge/Language-Python-green)
@@ -10,7 +11,7 @@
 
 Aplicação web fullstack para **verificar, analisar e responder emails** de forma rápida e prática.  
 
-O **frontend** é desenvolvido em **React** com **Vite**, proporcionando uma interface moderna e responsiva.  
+O **frontend** é desenvolvido em **React** com **TypeScript** e **Vite**, proporcionando uma interface moderna e responsiva.  
 O **backend** utiliza **Python + FastAPI**, fornecendo endpoints rápidos e confiáveis para validação de emails e integração com IA.
 
 ---
@@ -41,7 +42,7 @@ https://email-verify-70m7.onrender.com/
 
 ## 🚀 Tecnologias
 
-Frontend: React, Javascript, Vite, TailwindCSS              
+Frontend: React, TypeScript, Vite, TailwindCSS              
 Backend: Python, FastAPI, Uvicorn, Gemini-2.5-flash          
 Deploy: Render            
 
