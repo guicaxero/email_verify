@@ -1,10 +1,15 @@
 import { Outlet } from "react-router-dom";
+import HeaderCpnt from "../../components/HeaderCpnt";
 
 const PageDefault = () => {
     return (
-        <main className="h-screen bg-[url('/assets/background.jpg')] bg-cover bg-center flex items-center justify-center bg-">
-            <Outlet />
-        </main>
+        <>
+            <HeaderCpnt />
+            <main className="h-screen bg-gray-900 flex items-center justify-center">
+                <Outlet />
+            </main>
+        </>
+
     )
 }
 

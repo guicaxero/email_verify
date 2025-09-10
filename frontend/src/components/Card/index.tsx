@@ -5,17 +5,23 @@ interface CardProps {
     children: ReactNode
 }
 
-
-const Card = ({title, children}:CardProps) => {
+const Card = ({ title, children }: CardProps) => {
     return (
-        <div className="lg:w-2/3 max-h-screen md:h-[90vh] flex flex-col items-center justify-center bg-gray-300 p-10 rounded-2xl shadow-lg">
-            <h1 className="text-xl sm:text-4xl font-bold text-center text-gray-800 mb-6">
-                {title}
-            </h1>
+        <div className="
+            lg:w-2/3 max-h-screen md:h-[90vh] 
+            flex flex-col items-center justify-center
+            bg-[#1a2235]/80 backdrop-blur-sm
+            p-10 rounded-2xl shadow-2xl border border-[#00FFFF]/20
+            transition-transform duration-300 hover:scale-[1.01]
+        ">
+            {title && (
+                <h1 className="text-2xl sm:text-4xl font-bold text-center text-white mb-6">
+                    {title}
+                </h1>
+            )}
             {children}
         </div>
     )
 }
-
 
 export default Card;

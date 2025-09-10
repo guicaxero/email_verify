@@ -25,18 +25,25 @@ const Result = () => {
                     })}
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center text-center p-6 bg-white rounded-2xl shadow-md w-full">
-                    <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                <div className="
+                    flex flex-col items-center justify-center text-center 
+                    p-8 rounded-2xl shadow-2xl border border-[#00FFFF]/20 
+                    bg-[#1a2235]/80 backdrop-blur-sm w-full
+                ">
+                    <h2 className="text-2xl font-semibold text-white mb-3">
                         Nenhum resultado disponível
                     </h2>
-                    <p className="text-gray-600">
+                    <p className="text-gray-300">
                         Volte para processar mais emails e gerar respostas automáticas.
                     </p>
                 </div>
             )}
 
             <Link to="/" className="mt-6">
-                <ButtonCpnt buttonClass=" bg-gray-400 px-6 hover:bg-gray-500">
+                <ButtonCpnt buttonClass="text-white border border-[#00FFFF] px-5
+                    hover:bg-[#00FFFF] 
+                    hover:text-black 
+                ">
                     Voltar para a página inicial
                 </ButtonCpnt>
             </Link>

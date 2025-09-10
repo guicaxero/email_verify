@@ -2,19 +2,18 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ButtonCpnt from "../ButtonCpnt";
 import axios from "axios"
-import { PaperClipIcon } from '@heroicons/react/24/outline' 
+import { PaperClipIcon } from '@heroicons/react/24/outline';
 import { useEmailResponse } from "../../hooks/useEmailResponse";
 import Loading from "../Loading";
 import { EMAIL_VERIFY_API_URL } from "../../../config";
-
 
 const FormCpnt = () => {
     const [mode, setMode] = useState("text");
     const [valueText, setValueText] = useState("");
     const [files, setFiles] = useState<FileList | null>(null);
-    const [loading, setLoading] = useState(false);
-    const {setEmailResponse} = useEmailResponse()
-    
+    const [loading, setLoading] = useState(false)
+    const { setEmailResponse } = useEmailResponse()
+
     const navigate = useNavigate()
 
     const handleChangeText = (text: string) => {
@@ -29,9 +28,9 @@ const FormCpnt = () => {
         if (filesArray.length > 5) {
             alert("Você só pode enviar até 5 emails por vez.");
         } else {
-            setFiles(files)
+            setFiles(files);
         }
-    }
+    };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -49,37 +48,46 @@ const FormCpnt = () => {
                 headers: { "Content-Type": "multipart/form-data" }
             })
             .then(res => {
-                setEmailResponse(res.data)
+                setEmailResponse(res.data);
                 navigate("/result");
             })
             .catch(error => {
                 console.error("Falha na Requisição", error);
-                navigate("/error")
+                navigate("/error");
             })
             .finally(() => setLoading(false));
         }
     };
 
-    if(loading) return <Loading />;
+    if (loading) return <Loading />;
 
     return (
-        <form 
-            className="p-6 bg-gray-300 rounded-2xl shadow-md max-w-full"
-            onSubmit={event => handleSubmit(event)}
+        <form
+            className="p-6 bg-[#1a2235]/80 backdrop-blur-sm rounded-xl shadow-xl border border-[#00FFFF]/20 max-w-full md:w-[80%] transition-transform duration-300 hover:scale-[1.01]"
+            onSubmit={handleSubmit}
         >
-            {loading && <Loading />}
-            <h1 className="text-xl font-bold mb-4 text-center text-gray-900">Insira o email ou faça upload do arquivo para análise</h1>
+            <h1 className="text-lg md:text-xl font-semibold mb-4 text-center text-white">
+                Insira o email ou faça upload do arquivo para análise
+            </h1>
 
-            <div className="flex gap-2 mb-4">
+            <div className="flex gap-2 mb-6">
                 <ButtonCpnt
                     onClick={() => setMode("text")}
-                    buttonClass={`flex-1  ${mode === "text" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+                    buttonClass={`flex-1 py-2 rounded-lg font-medium transition-all ${
+                        mode === "text"
+                            ? "bg-[#00FFFF] text-black shadow-md"
+                            : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                    }`}
                 >
                     Texto
                 </ButtonCpnt>
                 <ButtonCpnt
                     onClick={() => setMode("upload")}
-                    buttonClass={`flex-1 ${mode === "upload" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+                    buttonClass={`flex-1 py-2 rounded-lg font-medium transition-all ${
+                        mode === "upload"
+                            ? "bg-[#00FFFF] text-black shadow-md"
+                            : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                    }`}
                 >
                     Upload
                 </ButtonCpnt>
@@ -89,7 +97,13 @@ const FormCpnt = () => {
                 <textarea
                     key="textarea"
                     placeholder="Digite aqui..."
-                    className="w-full p-2 border rounded-md h-24 sm:h-32 md:h-40 lg:h-48 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="
+                        w-full p-3 rounded-lg h-32 md:h-40 lg:h-48 2xl:h-94
+                        bg-gray-800 text-white placeholder-gray-400
+                        border border-gray-700 focus:outline-none
+                        focus:ring-2 focus:ring-[#00FFFF]
+                        resize-none transition
+                    "
                     value={valueText}
                     onChange={(event) => handleChangeText(event.target.value)}
                 />
@@ -98,7 +112,7 @@ const FormCpnt = () => {
                     <input
                         key="file"
                         type="file"
-                        multiple 
+                        multiple
                         accept="text/plain, application/pdf"
                         onChange={(event) => handleUploadFile(event.target.files)}
                         id="fileUpload"
@@ -106,15 +120,22 @@ const FormCpnt = () => {
                     />
                     <label
                         htmlFor="fileUpload"
-                        className="w-full border rounded-md p-3 text-gray-900 cursor-pointer hover:bg-gray-200 flex items-center justify-center gap-2 flex-wrap"
+                        className="w-full p-3 rounded-lg
+                                   bg-gray-800 text-gray-300
+                                   border border-gray-700 cursor-pointer
+                                   flex items-center justify-center gap-2 flex-wrap
+                                   hover:bg-gray-700 hover:border-[#00FFFF]
+                                   transition"
                     >
-                        <PaperClipIcon className="w-5 h-5 text-gray-500" />
+                        <PaperClipIcon className="w-5 h-5 text-[#00FFFF]" />
                         {files && files.length > 0 ? (
                             files.length === 1 ? (
                                 files[0].name
                             ) : (
                                 <>
-                                    {files[0].name} + {files.length - 1} arquivo{files.length - 1 > 1 ? "s" : ""} selecionado{files.length - 1 > 1 ? "s" : ""}
+                                    {files[0].name} + {files.length - 1} arquivo
+                                    {files.length - 1 > 1 ? "s" : ""} selecionado
+                                    {files.length - 1 > 1 ? "s" : ""}
                                 </>
                             )
                         ) : (
@@ -126,7 +147,8 @@ const FormCpnt = () => {
 
             <ButtonCpnt
                 type="submit"
-                buttonClass="mt-4 w-full bg-blue-500 text-white py-2 hover:bg-blue-600 transition"
+                buttonClass="mt-6 w-full bg-[#00FFFF] text-black font-semibold py-3 rounded-lg 
+                hover:bg-cyan-400 transition shadow-lg"
             >
                 Enviar
             </ButtonCpnt>
