@@ -1,13 +1,9 @@
 import { createContext, useState, ReactNode } from "react";
-
-interface EmailResponse {
-    is_productive: boolean;
-    response_generate: string;
-}
+import { IEmailResponse } from "../../shared/IEmailResponse";
 
 interface EmailResponseContextType {
-  emailResponse: EmailResponse[] | null;
-  setEmailResponse: React.Dispatch<React.SetStateAction<EmailResponse[] | null>>;
+  emailResponse: IEmailResponse[] | null;
+  setEmailResponse: React.Dispatch<React.SetStateAction<IEmailResponse[] | null>>;
 }
 
 export const EmailResponseContext = createContext<EmailResponseContextType>({
@@ -20,7 +16,7 @@ interface EmailResponseProviderProps {
 }
 
 export const EmailResponseProvider = ({ children }: EmailResponseProviderProps) => {
-  const [emailResponse, setEmailResponse] = useState<EmailResponse[] | null>(null);
+  const [emailResponse, setEmailResponse] = useState<IEmailResponse[] | null>(null);
 
   return (
     <EmailResponseContext.Provider value={{ emailResponse, setEmailResponse }}>

@@ -13,7 +13,7 @@ const EmailResponseCard = ({ isProductive, responseGenerate, position }: EmailRe
             p-6 mb-6 transition-transform duration-300 
             hover:scale-[0.99] hover:shadow-cyan-500/20
         ">
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-between items-center mb-4 gap-2">
                 <h1 className="text-xl font-bold text-white">
                     Email {position}
                 </h1>
