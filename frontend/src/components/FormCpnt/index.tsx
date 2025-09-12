@@ -49,7 +49,7 @@ const FormCpnt = () => {
             })
             .then(res => {
                 setEmailResponse(res.data);
-                navigate("/result");
+                navigate("/responses");
             })
             .catch(error => {
                 console.error("Falha na Requisição", error);

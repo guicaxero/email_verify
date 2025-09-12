@@ -23,7 +23,7 @@ const HeaderCpnt = ({}:HeaderCpntProps) => {
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/result">Respostas</Link>
+                        <Link to="/responses/history">Histórico</Link>
                     </li>
                 </Navbar>
             </div>
