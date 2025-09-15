@@ -15,7 +15,10 @@ export class StorageService {
                     (existingItem) => existingItem.response_generate === newItem.response_generate
                 )
         );
-        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(uniqueNewResults));
+        const combinedResults = [...uniqueNewResults, ...existingEmail];
+        const historyList = combinedResults.slice(0, 5);
+        
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(historyList));
     }
 
     static clear() {

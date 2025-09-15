@@ -28,17 +28,31 @@ Gere a resposta completa em português, mantendo tom profissional e cortês, pro
 
 def prompt_validate_email(email: str) -> str:
     prompt = f"""
-Analise este e-mail e determine se ele tem função produtiva ou se é apenas formalidades 
-(ex.: felicitações, agradecimentos, mensagens de cortesia, testes, ou qualquer conteúdo irrelevante). 
+Você deve analisar o conteúdo do e-mail abaixo e classificá-lo em **apenas uma palavra**: produtivo ou improdutivo.
 
-Responda EXATAMENTE com UMA PALAVRA, sem aspas, sem explicações e sem nada mais:
+### Regras de classificação (em ordem de prioridade):
 
-- Se o e-mail contém uma solicitação, ação ou qualquer função prática → responda: produtivo
-- Se o e-mail contém apenas formalidades, felicitações, agradecimentos ou qualquer conteúdo irrelevante → responda: improdutivo
+1. **IMPRODUTIVO** → Sempre classifique como improdutivo se o e-mail se encaixar em QUALQUER uma das condições abaixo:
+   - Contém **linguagem sexual, vulgar, ofensiva, discriminatória ou violenta**.
+   - É **informal demais**, como gírias, memes, frases soltas ou sem estrutura profissional.
+   - É **spam**, propaganda, corrente, ou mensagem automática sem relevância prática.
+   - É **irrelevante**, sem contexto corporativo ou sem relação com trabalho.
+   - É **confuso, nonsense ou muito curto**, sem informação clara para tomada de decisão.
+   - **Mensagens de felicitações, agradecimentos, cumprimentos ou qualquer cortesia** que não contenha ação prática.
+
+2. **PRODUTIVO** → Classifique como produtivo **apenas se TODAS as condições abaixo forem verdadeiras**:
+   - O conteúdo é **adequado e respeitoso**, sem linguagem vulgar ou ofensiva.
+   - Está escrito de forma **profissional ou corporativa**.
+   - Contém **uma solicitação, instrução, informação útil ou ação prática** relacionada a trabalho, projeto ou operação.
+
+ **IMPORTANTE:**  
+- Se houver QUALQUER dúvida ou se o texto não atender a TODOS os critérios de produtivo, **classifique como improdutivo**.  
+- A resposta deve ser **exatamente uma palavra**, sem aspas ou explicações:
+  - `produtivo`
+  - `improdutivo`
 
 E-mail recebido:
 {email}
 
-A resposta deve ser estritamente apenas uma palavra: produtivo ou improdutivo.
 """
     return prompt
