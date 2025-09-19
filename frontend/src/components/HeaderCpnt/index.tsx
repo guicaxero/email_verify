@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import Navbar from "../Navbar"
 
 
 interface HeaderCpntProps {}
 
 const HeaderCpnt = ({}:HeaderCpntProps) => {
+    const location = useLocation();
+    
     return (
         <header className="w-full bg-gray-900 flex justify-center p-4">
             <div className="bg-black flex flex-col md:flex-row justify-end items-center w-full md:w-[65%] gap-4 md:gap-20 rounded-lg relative p-2 md:p-6">
@@ -19,10 +21,10 @@ const HeaderCpnt = ({}:HeaderCpntProps) => {
                 </h1>
 
                 <Navbar>
-                    <li>
+                    <li className={ location.pathname === "/" ? 'border-b-2 border-b-[#00FFFF]' : '' }>
                         <Link to="/">Home</Link>
                     </li>
-                    <li>
+                    <li className={ location.pathname === "/responses/history" ? 'border-b-2 border-b-[#00FFFF]' : '' } >
                         <Link to="/responses/history">Histórico</Link>
                     </li>
                 </Navbar>

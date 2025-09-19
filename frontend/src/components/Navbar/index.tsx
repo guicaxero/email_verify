@@ -13,9 +13,7 @@ const Navbar = ( {children}:NavbarProps ) => {
                 [&>li]:font-semibold 
                 [&>li]:hover:bg-[#00FFFF] 
                 [&>li]:px-3 [&>li]:py-1 
-                [&>li]:rounded-lg 
-                [&>li]:transition-all 
-                [&>li]:duration-300"
+                [&>li]:rounded-lg"
             >
                 {children}
             </ul>
