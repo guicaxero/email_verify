@@ -3,13 +3,11 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
 
 export default defineConfig([
-  // Ignora a pasta de build
   globalIgnores(['dist']),
 
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
 
-    // Extensões de regras
     extends: [
       'eslint:recommended',
       'plugin:@typescript-eslint/recommended',

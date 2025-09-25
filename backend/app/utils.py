@@ -20,7 +20,7 @@ Regras para gerar a resposta:
    - Evite qualquer referência a nomes, mesmo que estejam presentes no e-mail.
 
 4. **Encerramento fixo:**  
-   - Sempre finalize a resposta com: "Atenciosamente, Suporte AutoU".  
+   - Sempre finalize a resposta com: "Atenciosamente, Guilherme Caxéro".  
    - **Nunca substitua ou tente adivinhar nomes** no fechamento.
 
 5. **Datas:**  
